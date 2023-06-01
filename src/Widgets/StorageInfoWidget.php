@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Neoisrecursive\StorageInfo\Widgets;
 
 use Statamic\Assets\AssetContainer as Container;
@@ -7,7 +9,7 @@ use Statamic\Facades\AssetContainer;
 use Statamic\Support\Str;
 use Statamic\Widgets\Widget;
 
-class StorageWidget extends Widget
+class StorageInfoWidget extends Widget
 {
     /**
      * The HTML that should be shown in the widget.
@@ -16,7 +18,7 @@ class StorageWidget extends Widget
      */
     public function html()
     {
-        return view('storage-info::widgets.storage-widget', [
+        return view('storage-info::widgets.storage-info-widget', [
             'containers' => $this->getContainerData(),
         ]);
     }

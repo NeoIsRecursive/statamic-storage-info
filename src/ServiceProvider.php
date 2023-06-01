@@ -2,13 +2,13 @@
 
 namespace Neoisrecursive\StorageInfo;
 
-use Neoisrecursive\StorageInfo\Widgets\StorageWidget;
+use Neoisrecursive\StorageInfo\Widgets\StorageInfoWidget;
 use Statamic\Providers\AddonServiceProvider;
 
 class ServiceProvider extends AddonServiceProvider
 {
     protected $widgets = [
-        StorageWidget::class,
+        StorageInfoWidget::class,
     ];
 
     public function bootAddon()
