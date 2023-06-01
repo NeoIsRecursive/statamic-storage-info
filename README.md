@@ -21,7 +21,7 @@ composer require neoisrecursive/storage-info
 ## How to Use
 
 in `config('statamic.cp')` add new widget with type of storage info :)
- 
+
 ```php
     'widgets' => [
         [
