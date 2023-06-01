@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Widgets;
+namespace Neoisrecursive\StorageInfo\Widgets;
 
-use Illuminate\Support\Facades\Storage;
 use Statamic\Assets\AssetContainer as Container;
 use Statamic\Facades\AssetContainer;
 use Statamic\Support\Str;
@@ -17,6 +16,12 @@ class StorageWidget extends Widget
      */
     public function html()
     {
+        return view('storage-info::widgets.storage-widget', [
+            'containers' => $this->getContainerData(),
+        ]);
+    }
+
+    private function getContainerData() {
         $containers = AssetContainer::all()->filter(function ($container) {
             return config("filesystems.disks.{$container->diskHandle()}.driver") === 'local';
         })->map(function (Container $container) {
@@ -30,8 +35,6 @@ class StorageWidget extends Widget
             ];
         });
 
-        return view('widgets.storage-widget', [
-            'containers' => $containers,
-        ]);
+        return $containers;
     }
 }

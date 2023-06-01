@@ -11,7 +11,13 @@
             </a></h2>
     </div>
     <div class="card-body p-4 flex flex-col content">
-
+        <div class="flex justify-between items-center mt-2">
+                <p class="mb-0">name<p>
+            <div class="flex">
+                <p class="mb-0">files</p>
+                <p class="mb-0 ml-2">size</p>
+            </div>
+        </div>
         @foreach($containers as $container)
         <div class="flex justify-between items-center mt-2">
             <a class="mb-0" href="{{ $container['url'] }}">

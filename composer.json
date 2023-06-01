@@ -2,7 +2,7 @@
   "name": "neoisrecursive/storage-info",
   "autoload": {
     "psr-4": {
-      "NeoIsRecursive\\StorageInfo\\": "src"
+      "Neoisrecursive\\StorageInfo\\": "src"
     }
   },
   "extra": {
@@ -12,8 +12,16 @@
     },
     "laravel": {
       "providers": [
-        "NeoIsRecursive\\StorageInfo\\ServiceProvider"
+        "Neoisrecursive\\StorageInfo\\ServiceProvider"
       ]
+    }
+  },
+  "require": {
+    "statamic/cms": "^4.4"
+  },
+  "config": {
+    "allow-plugins": {
+      "pixelfear/composer-dist-plugin": true
     }
   }
 }
