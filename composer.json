@@ -1,0 +1,19 @@
+{
+  "name": "neoisrecursive/storage-info",
+  "autoload": {
+    "psr-4": {
+      "NeoIsRecursive\\StorageInfo\\": "src"
+    }
+  },
+  "extra": {
+    "statamic": {
+      "name": "Storage Info",
+      "description": "Storage Info addon"
+    },
+    "laravel": {
+      "providers": [
+        "NeoIsRecursive\\StorageInfo\\ServiceProvider"
+      ]
+    }
+  }
+}
