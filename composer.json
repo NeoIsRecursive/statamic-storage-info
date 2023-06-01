@@ -1,5 +1,11 @@
 {
   "name": "neoisrecursive/storage-info",
+  "authors": [
+    {
+      "name": "Neo Lejondahl",
+      "email": "neo.leijondahl@gmail.com"
+    }
+  ],
   "autoload": {
     "psr-4": {
       "Neoisrecursive\\StorageInfo\\": "src"
