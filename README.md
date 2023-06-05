@@ -1,6 +1,6 @@
 # Storage Info
 
-![image preview of widget]("misc/storage-info.png")
+![image preview of widget](https://github.com/NeoIsRecursive/statamic-storage-info/blob/main/misc/storage-info.png)
 
 ## Features
 
