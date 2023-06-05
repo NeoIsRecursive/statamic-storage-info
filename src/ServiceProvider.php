@@ -12,18 +12,19 @@ class ServiceProvider extends AddonServiceProvider
     ];
 
     protected $routes = [
-       "cp" =>  __DIR__ . '/../routes/api.php'
+        "cp" =>  __DIR__ . '/../routes/api.php'
     ];
 
-    protected $vite = [ 
+    protected $vite = [
         'input' => [
             'resources/js/main.js',
+            'resources/css/main.css',
         ],
         'publicDirectory' => 'resources/dist',
-    ]; 
-    
+    ];
+
     public function bootAddon()
     {
-        $this->loadViewsFrom(__DIR__.'/../resources/views', 'storage-info');
+        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'storage-info');
     }
 }

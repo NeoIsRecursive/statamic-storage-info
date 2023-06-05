@@ -17,24 +17,24 @@
                     <span>Storage</span>
                 </a></h2>
         </div>
-        <div v-if="loading" class="flex justify-center">
-            <loading-graphic :inline="true" :size="22" />
-        </div>
-        <div class="card-body p-4 flex flex-col content" v-for="container in containers">
+        <div class="card-body p-4 flex flex-col content">
             <div class="flex justify-between items-center mt-2">
                 <p class="mb-0">name</p>
-                <div class="flex">
+                <div class="grid grid-cols-2">
                     <p class="mb-0">files</p>
                     <p class="mb-0 ml-2">size</p>
                 </div>
             </div>
-            <div class="flex justify-between items-center mt-2">
+            <div v-if="loading" class="flex justify-center">
+                <loading-graphic :inline="true" :size="22" />
+            </div>
+            <div class="flex justify-between items-center mt-2" v-for="container in containers">
                 <a class="mb-0" :href="container.url">
-                    <h4></h4>
+                    <h4 class="mb-0">{{ container.name }}</h4>
                 </a>
-                <div class="flex">
-                    <p class="mb-0">files</p>
-                    <p class="mb-0 ml-2">space used</p>
+                <div class="grid grid-cols-2">
+                    <p class="mb-0">{{ container.files }}</p>
+                    <p class="mb-0 ml-2">{{ container.spaceUsed }}</p>
                 </div>
             </div>
         </div>
@@ -43,20 +43,20 @@
 
 <script>
 export default {
-    props: [
-        'assetsRoute',
-        'containers',
-        'storageInfoRoute'
-    ],
+    props: {
+        'assetsRoute': String,
+        'containersString': String,
+        'storageInfoRoute': String
+    },
     data() {
         return {
             containers: [],
-            loading: false,
+            loading: true,
             error: false
         }
     },
-    mounted: () => {
-        this.getContainers();
+    mounted() {
+        this.getContainers(this.storageInfoRoute, this.containersString);
     },
     methods: {
         async getContainers(route, containers) {
@@ -70,7 +70,7 @@ export default {
                 const res = await fetch(`${route}?${params.toString()}`)
                 const data = await res.json();
                 this.loading = false;
-                this.containers = data;
+                this.containers = data
             } catch (e) {
                 this.error = true;
                 console.error(e);
