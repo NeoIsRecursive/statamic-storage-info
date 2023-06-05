@@ -1,3 +1,8 @@
+{{
+Vite::useBuildDirectory('neoisrecursive/storage-info')
+    ->withEntryPoints(['resources/js/main.ts'])
+}}
+
 <div class="card p-0">
     <div class="flex justify-between items-center p-4 pb-0">
         <h2><a href="{{ route('statamic.cp.assets.index') }}" class="flex items-center">
@@ -12,7 +17,8 @@
     </div>
     <div class="card-body p-4 flex flex-col content">
         <div class="flex justify-between items-center mt-2">
-                <p class="mb-0">name<p>
+            <p class="mb-0">name
+            <p>
             <div class="flex">
                 <p class="mb-0">files</p>
                 <p class="mb-0 ml-2">size</p>
