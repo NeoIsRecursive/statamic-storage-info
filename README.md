@@ -1,14 +1,12 @@
 # Storage Info
 
-> Storage Info is a Statamic addon that does something pretty neat.
+![image preview of widget]("misc/storage-info.png")
 
 ## Features
 
 This addon does:
 
-- This
-- And this
-- And even this
+- Shows asset containers files and storage used
 
 ## How to Install
 
@@ -25,7 +23,11 @@ in `config('statamic.cp')` add new widget with type of storage info :)
 ```php
     'widgets' => [
         [
-            'type' => 'storage_info'
+            'type' => 'storage_info',
+            'containers' => [
+                'assets'
+                ...all-asset-container-handles-you-want-to-include
+            ]
         ]
     ],
 ```
