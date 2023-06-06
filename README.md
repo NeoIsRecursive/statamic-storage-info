@@ -1,6 +1,6 @@
 # Storage Info
 
-![image preview of widget](https://github.com/NeoIsRecursive/statamic-storage-info/blob/main/misc/storage-info.png)
+![image](https://github.com/NeoIsRecursive/statamic-storage-info/assets/64473191/166c628b-844c-4ce4-b023-3134c3127b90)
 
 ## Features
 
@@ -10,7 +10,7 @@ This addon does:
 
 ## How to Install
 
-You can search for this addon in the `Tools > Addons` section of the Statamic control panel and click **install**, or run the following command from your project root:
+Run the following command from your project root:
 
 ``` bash
 composer require neoisrecursive/statamic-storage-info
