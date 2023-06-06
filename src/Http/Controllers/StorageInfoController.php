@@ -13,13 +13,12 @@ class StorageInfoController extends Controller
 {
     public function __invoke(Request $request)
     {
-
-        $data = Cache::remember('neoisrecursive:storage-info', 1, fn () => $this->getContainerData($request->get('containers')));
+        $data = Cache::remember('neoisrecursive:storage-info', 3600, fn () => $this->getContainerData($request->get('containers')));
 
         return response($data);
     }
 
-    private function getContainerData(string ...$containers)
+    private function getContainerData(array $containers)
     {
         $containers = AssetContainer::all()->filter(function ($container) use ($containers) {
             return in_array($container->handle(), $containers);
