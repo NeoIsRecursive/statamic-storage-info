@@ -1,5 +1,5 @@
 <template>
-    <div class="card p-0">
+    <div class="card p-0 overflow-hidden">
         <div class="flex justify-between items-center p-4 pb-0">
             <h2><a :href="assetsRoute" class="flex items-center">
                     <div class="h-6 w-6 mr-2 text-gray-800"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -17,25 +17,29 @@
                     <span>Storage</span>
                 </a></h2>
         </div>
-        <div class="card-body p-4 flex flex-col content">
-            <div class="flex justify-between items-center mt-2">
-                <p class="mb-0">name</p>
-                <div class="grid grid-cols-2">
-                    <p class="mb-0">files</p>
-                    <p class="mb-0 ml-2">size</p>
-                </div>
-            </div>
+        <div class="card-body flex flex-col content py-4">
+            <table class="w-full table-auto">
+                <thead class="px-4">
+                    <tr>
+                        <td class="px-4">Container</td>
+                        <td>Assets</td>
+                        <td class="px-4 text-right whitespace-nowrap">Space used</td>
+                    </tr>
+                </thead>
+                <tbody v-for="container in containers">
+                    <tr class="hover:bg-[rgb(250,252,255)]">
+                        <td class="px-4 py-1 w-full"><a class="mb-0" :href="container.url">{{ container.name }}
+                            </a></td>
+                        <td>{{ container.files }}</td>
+                        <td class="w-fit whitespace-nowrap text-right px-4">{{ container.spaceUsed }}</td>
+                    </tr>
+                </tbody>
+            </table>
             <div v-if="loading" class="flex justify-center">
                 <loading-graphic :inline="true" :size="22" />
             </div>
-            <div class="flex justify-between items-center mt-2" v-for="container in containers">
-                <a class="mb-0" :href="container.url">
-                    <h4 class="mb-0">{{ container.name }}</h4>
-                </a>
-                <div class="grid grid-cols-2">
-                    <p class="mb-0">{{ container.files }}</p>
-                    <p class="mb-0 ml-2">{{ container.spaceUsed }}</p>
-                </div>
+            <div v-if="error" class="flex justify-center">
+                <p>Something went wrong</p>
             </div>
         </div>
     </div>
@@ -62,7 +66,9 @@ export default {
         async getContainers(route, containers) {
             const params = new URLSearchParams();
 
-            params.append('containers', containers);
+            for (const [key, container] of containers.split(',').entries()) {
+                params.append(`containers[${key}]`, container);
+            }
 
             try {
                 const res = await fetch(`${route}?${params.toString()}`)
@@ -71,6 +77,7 @@ export default {
                 this.containers = data
             } catch (e) {
                 this.error = true;
+                this.loading = false;
                 console.error(e);
             }
 
