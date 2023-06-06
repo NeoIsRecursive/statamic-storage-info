@@ -62,9 +62,7 @@ export default {
         async getContainers(route, containers) {
             const params = new URLSearchParams();
 
-            for (const container of containers.split(',')) {
-                params.append('containers', container);
-            }
+            params.append('containers', containers);
 
             try {
                 const res = await fetch(`${route}?${params.toString()}`)
