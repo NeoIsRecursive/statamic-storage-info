@@ -2,6 +2,7 @@
 
 namespace Neoisrecursive\StorageInfo;
 
+use Neoisrecursive\StorageInfo\Listeners\InvalidateCacheListener;
 use Neoisrecursive\StorageInfo\Widgets\StorageInfoWidget;
 use Statamic\Providers\AddonServiceProvider;
 
@@ -12,7 +13,11 @@ class ServiceProvider extends AddonServiceProvider
     ];
 
     protected $routes = [
-        'cp' => __DIR__.'/../routes/api.php',
+        'cp' => __DIR__ . '/../routes/api.php',
+    ];
+
+    protected $subscribe = [
+        InvalidateCacheListener::class,
     ];
 
     protected $vite = [
@@ -25,6 +30,6 @@ class ServiceProvider extends AddonServiceProvider
 
     public function bootAddon()
     {
-        $this->loadViewsFrom(__DIR__.'/../resources/views', 'storage-info');
+        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'storage-info');
     }
 }
