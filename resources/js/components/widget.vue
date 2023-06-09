@@ -17,12 +17,13 @@
                     <span>Storage</span>
                 </a></h2>
         </div>
-        <div class="card-body flex flex-col content py-4">
+        <div class="card-body flex flex-col content py-4 text-sm">
             <table class="w-full table-auto">
-                <thead class="px-4">
+                <thead class="px-4 font-medium">
                     <tr>
                         <td class="px-4">Container</td>
                         <td>Assets</td>
+                        <td class="pl-4">Unused</td>
                         <td class="px-4 text-right whitespace-nowrap">Space used</td>
                     </tr>
                 </thead>
@@ -30,8 +31,9 @@
                     <tr class="hover:bg-[rgb(250,252,255)]">
                         <td class="px-4 py-1 w-full"><a class="mb-0" :href="container.url">{{ container.name }}
                             </a></td>
-                        <td>{{ container.files }}</td>
-                        <td class="w-fit whitespace-nowrap text-right px-4">{{ container.spaceUsed }}</td>
+                        <td class="font-mono">{{ container.files }}</td>
+                        <td class="font-mono pl-4">{{ container.unused }}</td>
+                        <td class="font-mono w-fit whitespace-nowrap text-right px-4">{{ container.spaceUsed }}</td>
                     </tr>
                 </tbody>
             </table>
