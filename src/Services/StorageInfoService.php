@@ -11,14 +11,17 @@ use Statamic\Support\Str;
 
 class StorageInfoService
 {
+
+    public const CACHE_KEY = 'neoisrecursive:storage-info';
+
     public function get(array $containers)
     {
-        return Cache::rememberForever('neoisrecursive:storage-info', fn () => $this->getContainerData($containers));
+        return Cache::rememberForever(self::CACHE_KEY, fn () => $this->getContainerData($containers));
     }
 
     public function forget()
     {
-        return Cache::forget('neoisrecursive:storage-info');
+        return Cache::forget(self::CACHE_KEY);
     }
 
     public function getContainerData(array $containers)
