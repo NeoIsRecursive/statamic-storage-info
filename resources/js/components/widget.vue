@@ -23,6 +23,7 @@
                     <tr>
                         <td class="px-4">Container</td>
                         <td>Assets</td>
+                        <td class="pl-4">Unused</td>
                         <td class="px-4 text-right whitespace-nowrap">Space used</td>
                     </tr>
                 </thead>
@@ -31,6 +32,7 @@
                         <td class="px-4 py-1 w-full"><a class="mb-0" :href="container.url">{{ container.name }}
                             </a></td>
                         <td>{{ container.files }}</td>
+                        <td class="pl-4">{{ container.unused }}</td>
                         <td class="w-fit whitespace-nowrap text-right px-4">{{ container.spaceUsed }}</td>
                     </tr>
                 </tbody>
