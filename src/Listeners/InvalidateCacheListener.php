@@ -15,7 +15,6 @@ use Statamic\Events\TermSaved;
 
 class InvalidateCacheListener
 {
-
     public function __construct(
         protected StorageInfoService $service,
     ) {

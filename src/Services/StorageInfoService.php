@@ -11,7 +11,6 @@ use Statamic\Support\Str;
 
 class StorageInfoService
 {
-
     public const CACHE_KEY = 'neoisrecursive:storage-info';
 
     public function get(array $containers)
