@@ -46,15 +46,19 @@ class StorageInfoService
 
     public function getUnused(AssetCollection $assets)
     {
-        collect('content')
-            ->map(fn ($folder) => File::allFiles(base_path($folder)))
+        $exclude = [
+            'users',
+            'assets',
+        ];
+
+        collect(config('statamic.stache.stores'))
+            ->map(fn ($store, $key) => !in_array($key, $exclude) ? File::allFiles($store['directory']) : [])
             ->flatten()
             ->unique()
             ->each(function ($contentFile) use ($assets) {
                 $contents = file_get_contents($contentFile);
 
                 $assets->each(function ($asset, $index) use ($contents, $assets) {
-                    // If asset is used in content, then remove it from unused list.
                     if (strpos($contents, $asset->path()) !== false) {
                         $assets->forget($index);
                     }
