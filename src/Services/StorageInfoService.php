@@ -37,14 +37,16 @@ class StorageInfoService
         return $containers;
     }
 
-    public function getAssets(array $containers){
+    public function getAssets(array $containers)
+    {
         return AssetContainer::all()->filter(function ($container) use ($containers) {
             return in_array($container->handle(), $containers);
         });
     }
 
-    public function getUnused(AssetCollection $assets){
-        return collect('content')
+    public function getUnused(AssetCollection $assets)
+    {
+        collect('content')
             ->map(fn ($folder) => File::allFiles(base_path($folder)))
             ->flatten()
             ->unique()
@@ -58,5 +60,7 @@ class StorageInfoService
                     }
                 });
             });
+
+        return $assets;
     }
 }
