@@ -6,6 +6,7 @@
       "email": "neo.leijondahl@gmail.com"
     }
   ],
+  "license": "MIT",
   "autoload": {
     "psr-4": {
       "Neoisrecursive\\StorageInfo\\": "src"
