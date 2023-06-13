@@ -13,6 +13,12 @@
     }
   },
   "extra": {
+    "download-dist": [
+      {
+        "url": "https://github.com/neoisrecursive/statamic-storage-info/releases/download/{$version}/dist.tar.gz",
+        "path": "resources/dist"
+      }
+    ],
     "statamic": {
       "name": "Storage Info",
       "description": "Storage Info addon"
@@ -24,7 +30,8 @@
     }
   },
   "require": {
-    "statamic/cms": "^4.4"
+    "statamic/cms": "^4.4",
+    "pixelfear/composer-dist-plugin": "^0.1.5"
   },
   "config": {
     "allow-plugins": {
