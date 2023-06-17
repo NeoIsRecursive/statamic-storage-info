@@ -20,8 +20,8 @@
       }
     ],
     "statamic": {
-      "name": "Storage Info",
-      "description": "Storage Info addon"
+      "name": "Statamic storage Info",
+      "description": "A widget that displays some nice to know info about selected asset containers"
     },
     "laravel": {
       "providers": [
