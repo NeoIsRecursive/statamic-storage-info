@@ -1,7 +1,6 @@
 # Storage Info
 
-![image](https://github.com/NeoIsRecursive/statamic-storage-info/assets/64473191/5019b9f4-90d5-4595-a467-6242db66b1ed)
-
+![image](https://github.com/NeoIsRecursive/statamic-storage-info/assets/64473191/355c30c0-b593-480e-9db8-d2fb1b74d39f)
 
 ## Features
 
@@ -14,7 +13,7 @@ This addon adds a widget that displays
 
 In a nice table 🔥
 
-Also works with s3:
+Also works with s3 *(image is from an old unreleased version)*: 
 
 ![image](https://github.com/NeoIsRecursive/statamic-storage-info/assets/64473191/166c628b-844c-4ce4-b023-3134c3127b90)
 
