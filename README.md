@@ -6,6 +6,7 @@
 ## Features
 
 This addon adds a widget that displays
+
 - Asset Containers (that you specify in the widget)
 - Files on the disk
 - Bytes used by files
