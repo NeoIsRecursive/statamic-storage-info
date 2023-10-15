@@ -10,10 +10,8 @@ class StorageInfoController extends Controller
 {
     public function __invoke(Request $request, StorageInfoService $service)
     {
-        $data = $service->get($request->get('containers', []));
-
         return response([
-            'data' => $data,
+            'data' => $service->get($request->input('containers', []))->map->toArray(),
             'meta' => [
                 'columns' => [
                     [
