@@ -2,7 +2,7 @@
   <div class="card p-0 overflow-hidden">
     <h2 class="p-4">
       <a :href="assetsRoute" class="flex items-center">
-        <svg-icon name="assets" class="h-6 w-6 mr-2 text-gray-800" />
+        <svg-icon name="light/assets" class="h-6 w-6 mr-2 text-gray-800" />
         <span>Storage</span>
       </a>
     </h2>
