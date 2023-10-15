@@ -54,7 +54,11 @@ class StorageInfoService
         ];
 
         collect(config('statamic.stache.stores'))
-            ->map(fn ($store, $key) => !in_array($key, $exclude) ? File::allFiles($store['directory']) : [])
+            ->map(
+                fn ($store, $key) => !in_array($key, $exclude) && File::exists($store['directory'])
+                    ? File::allFiles($store['directory'])
+                    : []
+            )
             ->flatten()
             ->unique()
             ->each(function ($contentFile) use ($assets) {
