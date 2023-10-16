@@ -17,7 +17,7 @@ class StorageInfoService
 
     /**
      * Get the storage info.
-     * 
+     *
      * @return Collection<StorageInfoDto>
      */
     public function get(array $containers)
@@ -36,7 +36,7 @@ class StorageInfoService
 
     /**
      * Get the container data.
-     * 
+     *
      * @return Collection<array>
      */
     public function getContainerData(array $containers)
@@ -57,7 +57,7 @@ class StorageInfoService
 
     /**
      * Get the assets from the given containers.
-     * 
+     *
      * @return Collection<Container>
      */
     public function getAssets(array $containers): Collection
