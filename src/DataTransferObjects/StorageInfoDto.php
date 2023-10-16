@@ -13,14 +13,19 @@ class StorageInfoDto
     ) {
     }
 
-    public static function make(array $data): self
-    {
+    public static function make(
+        string $name,
+        string $url,
+        int $totalFiles,
+        string $totalSpaceUsed,
+        int $totalUnusedFiles,
+    ): self {
         return new self(
-            $data['name'],
-            $data['url'],
-            $data['files'],
-            $data['spaceUsed'],
-            $data['unused'],
+            $name,
+            $url,
+            $totalFiles,
+            $totalSpaceUsed,
+            $totalUnusedFiles,
         );
     }
 

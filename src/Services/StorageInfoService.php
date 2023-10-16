@@ -43,7 +43,7 @@ class StorageInfoService
     {
         $containers = $this->getAssets($containers)->map(function (Container $container) {
             $assets = $container->assets();
-            return new StorageInfoDto(
+            return StorageInfoDto::make(
                 $container->title(),
                 $container->showUrl(),
                 $container->queryAssets()->count(),
