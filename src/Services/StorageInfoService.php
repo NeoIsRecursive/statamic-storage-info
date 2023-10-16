@@ -78,7 +78,7 @@ class StorageInfoService
 
         collect(config('statamic.stache.stores'))
             ->map(
-                fn ($store, $key) => !in_array($key, $exclude)
+                fn ($store, $key) => !in_array($key, $exclude) && File::exists($store['directory'])
                     ? File::allFiles($store['directory'])
                     : []
             )
