@@ -14,7 +14,7 @@ use Statamic\Events\GlobalSetSaved;
 use Statamic\Events\TermDeleted;
 use Statamic\Events\TermSaved;
 
-class InvalidateCacheListener
+final class InvalidateCacheListener
 {
     public function __construct(
         protected StorageInfoService $service,

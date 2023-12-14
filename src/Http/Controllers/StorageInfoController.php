@@ -9,8 +9,6 @@ class StorageInfoController extends Controller
 {
     public function __invoke(StorageInfoService $service)
     {
-
-
         return response()->json([
             'data' => $service->getCachedStorageInfo()->map->toArray(),
             'meta' => [
