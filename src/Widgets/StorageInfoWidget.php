@@ -10,8 +10,6 @@ class StorageInfoWidget extends Widget
 {
     public function html()
     {
-        return view('storage-info::widgets.storage-info-widget', [
-            'containers' => implode(',', $this->config('containers') ?? []),
-        ]);
+        return view('storage-info::widgets.storage-info-widget');
     }
 }

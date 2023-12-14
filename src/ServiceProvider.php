@@ -29,6 +29,15 @@ class ServiceProvider extends AddonServiceProvider
 
     public function bootAddon()
     {
+        $this->publishes([
+            __DIR__ . '/../config/storage-info.php' => config_path('storage-info.php'),
+        ], 'config');
+
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'storage-info');
+    }
+
+    public function register()
+    {
+        $this->mergeConfigFrom(__DIR__ . '/../config/storage-info.php', 'storage-info');
     }
 }

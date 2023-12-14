@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Neoisrecursive\StorageInfo\Services;
 
 use Illuminate\Support\Collection;
@@ -20,16 +22,15 @@ class StorageInfoService
      *
      * @return Collection<StorageInfoDto>
      */
-    public function get(array $containers)
+    public function getCachedStorageInfo(): Collection
     {
-        return $this->getContainerData($containers);
-        return Cache::rememberForever(self::CACHE_KEY, fn () => $this->getContainerData($containers));
+        return Cache::rememberForever(self::CACHE_KEY, fn () => $this->getStorageInfo());
     }
 
     /**
      * Forget the storage info.
      */
-    public function forget()
+    public function forget(): bool
     {
         return Cache::forget(self::CACHE_KEY);
     }
@@ -37,22 +38,20 @@ class StorageInfoService
     /**
      * Get the container data.
      *
-     * @return Collection<array>
+     * @return Collection<StorageInfoDto>
      */
-    public function getContainerData(array $containers)
+    public function getStorageInfo(): Collection
     {
-        $containers = $this->getAssets($containers)->map(function (Container $container) {
+        return $this->getAssetContainers()->map(function (Container $container) {
             $assets = $container->assets();
             return StorageInfoDto::make(
                 $container->title(),
                 $container->showUrl(),
                 $container->queryAssets()->count(),
                 Str::fileSizeForHumans($assets->sum(fn ($asset) => $asset->size())),
-                $this->getUnused($assets)->count(),
+                $this->getUnusedAssets($assets)->count(),
             );
         });
-
-        return $containers;
     }
 
     /**
@@ -60,17 +59,17 @@ class StorageInfoService
      *
      * @return Collection<Container>
      */
-    public function getAssets(array $containers): Collection
+    public function getAssetContainers(): Collection
     {
-        return AssetContainer::all()->filter(function ($container) use ($containers) {
-            return in_array($container->handle(), $containers);
-        });
+        return AssetContainer::all()->filter(
+            fn ($container) => in_array($container->handle(), config('storage-info.hide-containers'))
+        );
     }
 
     /**
      * Get the unused assets from the given collection.
      */
-    public function getUnused(AssetCollection $assets): AssetCollection
+    public function getUnusedAssets(AssetCollection $assets): AssetCollection
     {
         $exclude = [
             'assets',

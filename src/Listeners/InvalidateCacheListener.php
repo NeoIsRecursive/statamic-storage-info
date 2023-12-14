@@ -2,6 +2,7 @@
 
 namespace Neoisrecursive\StorageInfo\Listeners;
 
+use Illuminate\Contracts\Events\Dispatcher;
 use Neoisrecursive\StorageInfo\Services\StorageInfoService;
 use Statamic\Events\AssetDeleted;
 use Statamic\Events\AssetSaved;
@@ -27,20 +28,17 @@ class InvalidateCacheListener
 
     /**
      * Register the listeners for the subscriber.
-     *
-     * @param \Illuminate\Events\Dispatcher $events
-     * @return void
      */
-    public function subscribe($events)
+    public function subscribe(Dispatcher $events)
     {
-        $events->listen(AssetDeleted::class, [self::class, 'handle']);
-        $events->listen(AssetSaved::class, [self::class, 'handle']);
-        $events->listen(AssetUploaded::class, [self::class, 'handle']);
-        $events->listen(EntrySaved::class, [self::class, 'handle']);
-        $events->listen(EntryDeleted::class, [self::class, 'handle']);
-        $events->listen(GlobalSetSaved::class, [self::class, 'handle']);
-        $events->listen(GlobalSetDeleted::class, [self::class, 'handle']);
-        $events->listen(TermSaved::class, [self::class, 'handle']);
-        $events->listen(TermDeleted::class, [self::class, 'handle']);
+        $events->listen(AssetDeleted::class, $this->handle(...));
+        $events->listen(AssetSaved::class, $this->handle(...));
+        $events->listen(AssetUploaded::class, $this->handle(...));
+        $events->listen(EntrySaved::class, $this->handle(...));
+        $events->listen(EntryDeleted::class, $this->handle(...));
+        $events->listen(GlobalSetSaved::class, $this->handle(...));
+        $events->listen(GlobalSetDeleted::class, $this->handle(...));
+        $events->listen(TermSaved::class, $this->handle(...));
+        $events->listen(TermDeleted::class, $this->handle(...));
     }
 }

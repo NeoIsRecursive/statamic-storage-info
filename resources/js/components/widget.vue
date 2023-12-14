@@ -40,15 +40,7 @@ export default {
   mixins: [Listing],
   computed: {
     requestUrl() {
-      const params = new URLSearchParams();
-
-      for (const [key, container] of this.containersString
-        .split(",")
-        .entries()) {
-        params.append(`containers[${key}]`, container);
-      }
-
-      return `${this.storageInfoRoute}?${params.toString()}`;
+      return this.storageInfoRoute;
     },
   },
 };

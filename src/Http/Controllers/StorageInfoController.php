@@ -2,16 +2,17 @@
 
 namespace Neoisrecursive\StorageInfo\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Neoisrecursive\StorageInfo\Services\StorageInfoService;
 
 class StorageInfoController extends Controller
 {
-    public function __invoke(Request $request, StorageInfoService $service)
+    public function __invoke(StorageInfoService $service)
     {
-        return response([
-            'data' => $service->get($request->input('containers', []))->map->toArray(),
+
+
+        return response()->json([
+            'data' => $service->getCachedStorageInfo()->map->toArray(),
             'meta' => [
                 'columns' => [
                     [

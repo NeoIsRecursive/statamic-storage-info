@@ -2,7 +2,7 @@
 
 namespace Neoisrecursive\StorageInfo\DataTransferObjects;
 
-class StorageInfoDto
+final readonly class StorageInfoDto
 {
     public function __construct(
         public string $name,
