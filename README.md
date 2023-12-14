@@ -1,6 +1,7 @@
 # Storage Info
 
-![image](https://github.com/NeoIsRecursive/statamic-storage-info/assets/64473191/355c30c0-b593-480e-9db8-d2fb1b74d39f)
+![image](https://github.com/NeoIsRecursive/statamic-storage-info/assets/64473191/7cb8161a-8ff0-4c10-8cad-dff51855f48e)
+
 
 ## Features
 
