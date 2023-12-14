@@ -12,10 +12,11 @@ use Statamic\Assets\AssetCollection;
 use Statamic\Assets\AssetContainer as Container;
 use Statamic\Facades\AssetContainer;
 use Statamic\Support\Str;
+use Symfony\Component\Finder\SplFileInfo;
 
 class StorageInfoService
 {
-    public const CACHE_KEY = 'neoisrecursive:storage-info';
+    public const CACHE_KEY = 'neoisrecursive:storage-info:v1';
 
     /**
      * Get the storage info.
@@ -62,7 +63,7 @@ class StorageInfoService
     public function getAssetContainers(): Collection
     {
         return AssetContainer::all()->filter(
-            fn ($container) => in_array($container->handle(), config('storage-info.hide-containers'))
+            fn ($container) => !in_array($container->handle(), config('storage-info.hide-containers'))
         );
     }
 
@@ -83,8 +84,8 @@ class StorageInfoService
             )
             ->flatten()
             ->unique()
-            ->each(function ($contentFile) use ($assets) {
-                $contents = file_get_contents($contentFile);
+            ->each(function (SplFileInfo $contentFile) use ($assets) {
+                $contents = file_get_contents($contentFile->getPathname());
 
                 $assets->each(function ($asset, $index) use ($contents, $assets) {
                     if (strpos($contents, $asset->path()) !== false) {

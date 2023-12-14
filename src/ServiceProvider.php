@@ -31,7 +31,7 @@ final class ServiceProvider extends AddonServiceProvider
     {
         $this->publishes([
             __DIR__ . '/../config/storage-info.php' => config_path('storage-info.php'),
-        ], 'config');
+        ], 'storage-info-config');
 
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'storage-info');
     }

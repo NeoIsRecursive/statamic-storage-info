@@ -6,14 +6,14 @@
 
 This addon adds a widget that displays
 
-- Asset Containers (that you specify in the widget)
+- Asset Containers
 - Files on the disk
 - Bytes used by files
 - Unused files
 
 In a nice table 🔥
 
-Also works with s3 *(image is from an old unreleased version)*: 
+Also works with s3 _(image is from an old unreleased version)_:
 
 ![image](https://github.com/NeoIsRecursive/statamic-storage-info/assets/64473191/166c628b-844c-4ce4-b023-3134c3127b90)
 
@@ -21,7 +21,7 @@ Also works with s3 *(image is from an old unreleased version)*:
 
 Run the following command from your project root:
 
-``` bash
+```bash
 composer require neoisrecursive/statamic-storage-info
 ```
 
@@ -29,14 +29,20 @@ composer require neoisrecursive/statamic-storage-info
 
 in `config('statamic.cp')` add new widget with type of storage info :)
 
-``` php
+```php
     'widgets' => [
-        [
-            'type' => 'storage_info',
-            'containers' => [
-                'assets'
-                ...all-asset-container-handles-you-want-to-include
-            ]
-        ]
+        'storage_info',
     ],
 ```
+
+Publish the configuration file
+
+```php
+php artisan vendor:publish --tag="storage-info-config"
+```
+
+there you can add handles that you don't want to be in the widget
+
+## TODO
+
+- [ ] permissions
